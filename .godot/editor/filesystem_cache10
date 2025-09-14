@@ -1,0 +1,46 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1757851966
+Characters Pug.glb::PackedScene/PackedScene::2749052247084418696::1757846355::1757849852::1::::<><><>0<>0<>cf1423bfbd78761501ecf5e8e1b2e50f<>res://.godot/imported/Characters Pug.glb-6647452820b5197e3b62c7887c9ad9ec.scn::uid://dp1doym573nlt::::res://Characters Pug_Zombie_Atlas.png
+Characters Pug_Zombie_Atlas.png::CompressedTexture2D/CompressedTexture2D::8265976959853308893::1757846355::1757846356::1::::<><><>0<>0<>296a3f4f1575d8e9027f05a0943ce572<>res://.godot/imported/Characters Pug_Zombie_Atlas.png-96986470956339b998159ca1c294c28e.s3tc.ctex::
+Crab.glb::PackedScene/PackedScene::3592341455402300632::1757850275::1757850275::1::::<><><>0<>0<>0c0c1622d89e125ae26da004c9430fac<>res://.godot/imported/Crab.glb-991e23d0d26f97db275e8142d7b29607.scn::
+Dock Long.glb::PackedScene/PackedScene::5167645375188583866::1757850022::1757850022::1::::<><><>0<>0<>72be14b26e6825a6f1d0d363d82c7393<>res://.godot/imported/Dock Long.glb-96542fb90a0d66389678524a503bfae2.scn::
+Lighthouse_01.obj::Mesh/Mesh::7378311921544726111::1757849836::1757849837::1::::<><><>0<>0<>c619def1cfb10d8b31fb124edfaf0a5b<>res://.godot/imported/Lighthouse_01.obj-d70fae5f1dd525c0a4a8352d7fff96b2.mesh<*>res://.godot/imported/Lighthouse_01.obj-d70fae5f1dd525c0a4a8352d7fff96b2.mesh::
+Main.gd::GDScript::5274144055285407975::1757847250::0::1::::<>Node<><>0<>0<><>::
+Main.tscn::PackedScene::1946344858681233962::1757851717::0::1::::<><><>0<>0<><>::uid://che3m8vinc8jr::::res://Main.gd<>uid://dp478jyugrn7o::::res://Player.tscn<>uid://ha0ar5s2c3m4::::res://Mob.tscn<>uid://cqquurjk1i7yw::::res://ui_theme.tres<>uid://dvltbs7g5qwq6::::res://Tentacle.glb<>uid://cgyoik8kk8wl6::::res://ScoreLabel.gd<>uid://dbfh1lvbfpd24::::res://Ship.glb<>uid://cfvimnfrf8qu1::::res://Dock Long.glb<>uid://c7t0aseo5lem3::::res://Rubber Duck.glb<>uid://brgflr2a1ch7m::::res://Crab.glb
+map_Kd _T_Lighthouse_01.png::CompressedTexture2D/CompressedTexture2D::7774420797774578769::1757849836::1757849738::1::::<><><>0<>0<>8385549d28494cd3e41f54d17f30aaec<>res://.godot/imported/map_Kd _T_Lighthouse_01.png-584d7d7015d8803ba3d2bed0eda9fb04.ctex::
+Mii Maker - Nintendo 3DS.mp3::AudioStreamMP3/AudioStreamMP3::4719312752994935237::1757850810::1757851080::1::::<><><>0<>0<>b430e295fe38867c9164ab29dafcc267<>res://.godot/imported/Mii Maker - Nintendo 3DS.mp3-989562a2570867e16a3ebb0e5c3606bf.mp3str::
+Mob.gd::GDScript::6982596660960611729::1757851604::0::1::::<>CharacterBody3D<><>0<>0<><>::
+Mob.tscn::PackedScene::492840770380503333::1757851717::0::1::::<><><>0<>0<><>::uid://c6qol17bjlvyf::::res://Mob.gd<>uid://bicorb7we351t::::res://art/mob.glb<>uid://v0lhtnqoegwe::::res://Shark.glb<>uid://c3uj0wmi7gv1q::::res://roblox-death-sound-effect.mp3
+MusicPlayer.tscn::PackedScene/PackedScene::3399574693123466010::1757851074::0::1::::<><><>0<>0<><>::uid://c5qpnfga41t4p::::res://art/House In a Forest Loop.ogg
+Ocean.glb::PackedScene/PackedScene::2122760326253909952::1757847057::1757847059::1::::<><><>0<>0<>b05d4e8ad24e26f4788b84646eb0bfb0<>res://.godot/imported/Ocean.glb-a718a7fe90a15e230162a61593971744.scn::
+Player.gd::GDScript/GDScript::7877641666944519491::1757844483::0::1::::<>CharacterBody3D<><>0<>0<><>::
+Player.tscn::PackedScene::8273964046187778922::1757851717::0::1::::<><><>0<>0<><>::uid://dkh8uwb8g5h44::::res://Player.gd<>uid://d0ypm0v45pwdv::::res://art/player.glb<>uid://bffwqvep2iqhk::::res://Characters Pug.glb
+roblox-death-sound-effect.mp3::AudioStreamMP3/AudioStreamMP3::6780008816572688264::1757851134::1757851860::1::::<><><>0<>0<>9ca98b146409d87fe38a44dfdf2a7fee<>res://.godot/imported/roblox-death-sound-effect.mp3-fe7c44d6e0973d6968e14503a646ea1e.mp3str::
+Rubber Duck.glb::PackedScene/PackedScene::7059626418225679420::1757850098::1757850099::1::::<><><>0<>0<>678e7d4873e9e28748475930f28d8fc9<>res://.godot/imported/Rubber Duck.glb-4113e12accaa3c73223d68d011930bf0.scn::uid://qvgttr0rvksp::::res://Rubber Duck_House_Props_Diffuse.png
+Rubber Duck_House_Props_Diffuse.png::CompressedTexture2D/CompressedTexture2D::1166772688449333939::1757850099::1757850099::1::::<><><>0<>0<>ac1794e0658f6593943b09825b199d4d<>res://.godot/imported/Rubber Duck_House_Props_Diffuse.png-3d13718cbdb6b0382d1b3e51456cdf48.s3tc.ctex::
+ScoreLabel.gd::GDScript::5244384396242888341::1757851713::0::1::::<>Label<><>0<>0<><>::
+Shark.glb::PackedScene/PackedScene::1526256566499890376::1757846858::1757846858::1::::<><><>0<>0<>76ab5b51074e21c980847a5ae7df80be<>res://.godot/imported/Shark.glb-ce8f22fe1d743d26b6033e69174ed3d4.scn::uid://gv6danvwoabf::::res://Shark_Atlas_Pirate.png
+Shark_Atlas_Pirate.png::CompressedTexture2D/CompressedTexture2D::466372599887475671::1757846858::1757846858::1::::<><><>0<>0<>309a50de46fe5a2dd4cb46a648db9b04<>res://.godot/imported/Shark_Atlas_Pirate.png-093f536addf8b496a18e9ddbe19bf316.s3tc.ctex::
+Ship.glb::PackedScene/PackedScene::7240244843328982375::1757849308::1757849308::1::::<><><>0<>0<>101bf2c9c00f27ea02b7c5139593e367<>res://.godot/imported/Ship.glb-85f8b0682f657606e020d14293d5504c.scn::uid://c5eite8p8qvf5::::res://Ship_Atlas_Pirate.png
+Ship_Atlas_Pirate.png::CompressedTexture2D/CompressedTexture2D::6887284115367967564::1757849308::1757849309::1::::<><><>0<>0<>8139539bd53986466be886e281b9f85a<>res://.godot/imported/Ship_Atlas_Pirate.png-dbc8592c6fb63a16afb1c61a487f6907.s3tc.ctex::
+Tentacle.glb::PackedScene/PackedScene::8657092326596509879::1757850273::1757850274::1::::<><><>0<>0<>445c774a9f3063956bd704bbea4ff2b0<>res://.godot/imported/Tentacle.glb-252f0a8a0ca97db6ef31fa535026f69d.scn::uid://b72klqpqwmyv5::::res://Tentacle_Atlas_Pirate.png
+Tentacle_Atlas_Pirate.png::CompressedTexture2D/CompressedTexture2D::4688829557432904648::1757850274::1757850274::1::::<><><>0<>0<>28a1e54e1d0960e3aa71fd1cfee9c210<>res://.godot/imported/Tentacle_Atlas_Pirate.png-d831e6ec97fe17b271444d54fea8433d.s3tc.ctex::
+THSarabunNew Bold.ttf::FontFile::3964846004682296508::1757851966::1757851966::1::::<><><>0<>0<>364f39bbf55bc1123125e59f62e35f1d<>res://.godot/imported/THSarabunNew Bold.ttf-e5d290b1f66cfe80b2900ab6cbf8f582.fontdata::
+THSarabunNew BoldItalic.ttf::FontFile::532091736205759694::1757851966::1757851966::1::::<><><>0<>0<>34fee66eb048c26e7ea45c70e0baf8aa<>res://.godot/imported/THSarabunNew BoldItalic.ttf-3350d200ea3375dbe6c66f3dc81fc785.fontdata::
+THSarabunNew Italic.ttf::FontFile::6348930946284892607::1757851966::1757851966::1::::<><><>0<>0<>cd210a1dbbb8b0ee4f05bac76a0808bc<>res://.godot/imported/THSarabunNew Italic.ttf-55be2f0e693ebaed5e1c45064805a532.fontdata::
+THSarabunNew.ttf::FontFile::5224067728706624801::1757851966::1757851966::1::::<><><>0<>0<>a43d82781c01bd762373a51cf87ce63f<>res://.godot/imported/THSarabunNew.ttf-cc173d13e4ce7bb06f808b1001542a2b.fontdata::
+ui_theme.tres::Theme/Theme::5930143872682747302::1757842070::0::1::::<><><>0<>0<><>::uid://cyxhh7ddkn62q::::res://fonts/Montserrat-Medium.ttf
+UndertheSea.glb::PackedScene/PackedScene::8319947373940612524::1757849469::1757849470::1::::<><><>0<>0<>16e2aaaaec31ea1fdd46f954a7d5d7bf<>res://.godot/imported/UndertheSea.glb-64e914103a6e22171d6e035c41472906.scn::
+underwater_enviro_coral.glb::PackedScene/PackedScene::3421437962274379701::1757849609::1757849609::1::::<><><>0<>0<>8d0fe75323356e6c87e9091fd5a702a2<>res://.godot/imported/underwater_enviro_coral.glb-4012e45bfc717a56c24be11aa3395519.scn::
+::res://art/::1757847800
+body.tres::StandardMaterial3D/StandardMaterial3D::-1::1757842070::0::1::::<><><>0<>0<><>::
+eye.tres::StandardMaterial3D/StandardMaterial3D::-1::1757842070::0::1::::<><><>0<>0<><>::
+House In a Forest Loop.ogg::AudioStreamOggVorbis/AudioStreamOggVorbis::6912470962729766485::1757842070::1757844688::1::::<><><>0<>0<>ca11219f684f6cd2af90d4e6cdaead58<>res://.godot/imported/House In a Forest Loop.ogg-1a6a72ae843ad792b7039931227e8d50.oggvorbisstr::
+mob.glb::PackedScene/PackedScene::2952940687663745631::1757842070::1757844688::1::::<><><>0<>0<>a780a1250ec97030b0168a6a0460c3f3<>res://.godot/imported/mob.glb-3afb43c03b9d1598b6af5154e2543eac.scn::
+mob_body.tres::StandardMaterial3D/StandardMaterial3D::-1::1757842070::0::1::::<><><>0<>0<><>::
+mob_eye.tres::StandardMaterial3D/StandardMaterial3D::-1::1757842070::0::1::::<><><>0<>0<><>::
+player.glb::PackedScene/PackedScene::8964461739428881931::1757842070::1757844688::1::::<><><>0<>0<>888faf6ae4281eadd09c6bedcc72b9b7<>res://.godot/imported/player.glb-08dcfb373480a049995065542e37637b.scn::
+pupil.tres::StandardMaterial3D/StandardMaterial3D::-1::1757842070::0::1::::<><><>0<>0<><>::
+::res://fonts/::1757844688
+LICENSE.txt::TextFile/TextFile::-1::1757842070::0::1::::<><><>0<>0<><>::
+Montserrat-Medium.ttf::FontFile/FontFile::6505293508080888906::1757842070::1757844688::1::::<><><>0<>0<>07233739ee8ed56ec1cb0f04a4ff2983<>res://.godot/imported/Montserrat-Medium.ttf-e832861e4ad4110e172112dc430c04b0.fontdata::

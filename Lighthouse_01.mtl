@@ -1,0 +1,13 @@
+newmtl LightSG
+illum 4
+Kd 0.84 0.60 0.60
+Ka 1.00 0.64 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd map_Kd _T_Lighthouse_01.png
+Ni 1.00

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b8icnkvfe2le0"
+path="res://.godot/imported/Mii Maker - Nintendo 3DS.mp3-989562a2570867e16a3ebb0e5c3606bf.mp3str"
+
+[deps]
+
+source_file="res://Mii Maker - Nintendo 3DS.mp3"
+dest_files=["res://.godot/imported/Mii Maker - Nintendo 3DS.mp3-989562a2570867e16a3ebb0e5c3606bf.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

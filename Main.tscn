@@ -1,0 +1,306 @@
+[gd_scene load_steps=23 format=3 uid="uid://2y3ar4s86yra"]
+
+[ext_resource type="Script" uid="uid://che3m8vinc8jr" path="res://Main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dp478jyugrn7o" path="res://Player.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://ha0ar5s2c3m4" path="res://Mob.tscn" id="3"]
+[ext_resource type="Theme" uid="uid://cqquurjk1i7yw" path="res://ui_theme.tres" id="4_gnyca"]
+[ext_resource type="PackedScene" uid="uid://dvltbs7g5qwq6" path="res://Tentacle.glb" id="5_wkp8b"]
+[ext_resource type="Script" uid="uid://cgyoik8kk8wl6" path="res://ScoreLabel.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://dbfh1lvbfpd24" path="res://Ship.glb" id="6_3dxm6"]
+[ext_resource type="FontFile" uid="uid://bwquo1gw6pc1y" path="res://THSarabunNew Bold.ttf" id="7_20pc6"]
+[ext_resource type="PackedScene" uid="uid://cfvimnfrf8qu1" path="res://Dock Long.glb" id="8_trn2v"]
+[ext_resource type="PackedScene" uid="uid://c7t0aseo5lem3" path="res://Rubber Duck.glb" id="9_03owx"]
+[ext_resource type="PackedScene" uid="uid://brgflr2a1ch7m" path="res://Crab.glb" id="10_wkp8b"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="Shader" id="Shader_ocean"]
+code = "
+shader_type spatial;
+render_mode cull_disabled, depth_draw_opaque, specular_schlick_ggx, blend_mix;
+
+uniform float wave_strength : hint_range(0.0, 2.0) = 0.5;
+uniform float wave_frequency : hint_range(0.0, 10.0) = 1.5;
+uniform float wave_speed : hint_range(0.0, 5.0) = 1.0;
+uniform vec4 water_color : source_color = vec4(0.2, 0.6, 0.9, 0.8);
+uniform float metallic : hint_range(0.0, 1.0) = 0.1;
+uniform float roughness : hint_range(0.0, 1.0) = 0.3;
+
+void vertex() {
+    float wave1 = sin(VERTEX.x * wave_frequency + TIME * wave_speed) * wave_strength;
+    float wave2 = cos(VERTEX.z * wave_frequency * 0.8 + TIME * wave_speed * 1.2) * wave_strength * 0.6;
+    VERTEX.y += wave1 + wave2;
+}
+
+void fragment() {
+    ALBEDO = water_color.rgb;
+    ALPHA = water_color.a;
+    METALLIC = metallic;
+    ROUGHNESS = roughness;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocean"]
+render_priority = 0
+shader = SubResource("Shader_ocean")
+shader_parameter/wave_strength = 0.5
+shader_parameter/wave_frequency = 1.5
+shader_parameter/wave_speed = 1.0
+shader_parameter/water_color = Color(0.2, 0.6, 0.9, 0.8)
+shader_parameter/metallic = 0.1
+shader_parameter/roughness = 0.3
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ocean"]
+size = Vector2(60, 60)
+subdivide_width = 100
+subdivide_depth = 100
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_i5n5q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m3njk"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_yutuu"]
+sky_material = SubResource("ProceduralSkyMaterial_m3njk")
+
+[sub_resource type="Environment" id="Environment_0tcge"]
+background_mode = 2
+sky = SubResource("Sky_yutuu")
+ambient_light_source = 2
+ambient_light_color = Color(0.8, 0.9, 1, 1)
+ambient_light_energy = 0.15
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cr5ed"]
+albedo_color = Color(0.635294, 0.211765, 0.0235294, 1)
+
+[sub_resource type="CylinderMesh" id="3"]
+material = SubResource("StandardMaterial3D_cr5ed")
+radial_segments = 24
+rings = 1
+
+[sub_resource type="Curve3D" id="5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 14, 0, -15, 0, 0, 0, 0, 0, 0, -13, 0, -15, 0, 0, 0, 0, 0, 0, -13, 0, 16, 0, 0, 0, 0, 0, 0, 14, 0, 16, 0, 0, 0, 0, 0, 0, 14, 0, -15),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node"]
+script = ExtResource("1")
+mob_scene = ExtResource("3")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("1")
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Ground"]
+material_override = SubResource("ShaderMaterial_ocean")
+mesh = SubResource("PlaneMesh_ocean")
+
+[node name="Walls" type="StaticBody3D" parent="."]
+editor_description = "These invisible walls are used to prevent the player from escaping the playable area.
+
+These walls use WorldBoundaryShape3D collision shapes, which are infinitely large planes
+(even though they look finite in the editor)."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 10, 11)
+shape = SubResource("WorldBoundaryShape3D_i5n5q")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 1, -1.31134e-07, 0, 1.31134e-07, 1, 1, 4.37114e-08, -5.73206e-15, -13, 10, -4.76837e-07)
+shape = SubResource("WorldBoundaryShape3D_i5n5q")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(4.37114e-08, -1, 2.18557e-07, 3.82137e-15, -2.18557e-07, -1, 1, 4.37114e-08, -5.73206e-15, 14, 10, -4.76837e-07)
+shape = SubResource("WorldBoundaryShape3D_i5n5q")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 5.96046e-08, -1.42109e-14, 3.82137e-15, -2.18557e-07, -1, -5.96046e-08, 1, -2.18557e-07, 9.53674e-07, 10, -20)
+shape = SubResource("WorldBoundaryShape3D_i5n5q")
+
+[node name="DirectionalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 0, 20, 10)
+light_energy = 1.5
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_normal_bias = 0.1
+shadow_blur = 0.5
+directional_shadow_mode = 1
+directional_shadow_fade_start = 0.9
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0tcge")
+
+[node name="Player" parent="." instance=ExtResource("2")]
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.183514, 0, 0)
+
+[node name="Camera" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 9.53674e-07, 19)
+projection = 1
+fov = 48.6
+size = 24.0
+far = 40.0
+
+[node name="Cylinders" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -15)
+visible = false
+mesh = SubResource("3")
+
+[node name="MeshInstance3" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 1, -15)
+visible = false
+mesh = SubResource("3")
+
+[node name="MeshInstance2" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 1, 16)
+visible = false
+mesh = SubResource("3")
+
+[node name="MeshInstance4" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 16)
+visible = false
+mesh = SubResource("3")
+
+[node name="Root Scene6" parent="Cylinders" instance=ExtResource("5_wkp8b")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -22, -2, -16)
+
+[node name="Root Scene7" parent="Cylinders" instance=ExtResource("5_wkp8b")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 6, -2, -16)
+
+[node name="Root Scene8" parent="Cylinders" instance=ExtResource("5_wkp8b")]
+transform = Transform3D(-0.865, 0, 7.56207e-08, 0, 0.865, 0, -7.56207e-08, 0, -0.865, 5, -2, 14)
+
+[node name="Root Scene9" parent="Cylinders" instance=ExtResource("5_wkp8b")]
+transform = Transform3D(1.39091e-08, 0, 1, 0, 1, 0, -1, 0, 1.39091e-08, -23, -2, 14)
+
+[node name="SpawnPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+curve = SubResource("5")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-4.37113e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37113e-08, 14, 0, -15)
+rotation_mode = 1
+cubic_interp = false
+loop = false
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_gnyca")
+
+[node name="ScoreLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+anchor_right = 1.0
+theme = ExtResource("4_gnyca")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.2, 0.4, 0.9)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 28
+text = "🏆 Score: 0"
+script = ExtResource("6")
+
+[node name="PlayerInfo" type="VBoxContainer" parent="UserInterface"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 100.0
+
+[node name="InfoBackground" type="ColorRect" parent="UserInterface/PlayerInfo"]
+layout_mode = 2
+color = Color(0, 0.2, 0.5, 0.8)
+
+[node name="PlayerName" type="Label" parent="UserInterface/PlayerInfo"]
+layout_mode = 2
+theme = ExtResource("4_gnyca")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_20pc6")
+theme_override_font_sizes/font_size = 20
+text = "นายอัษฎาวุธ เรือนแก้ว"
+horizontal_alignment = 2
+
+[node name="StudentID" type="Label" parent="UserInterface/PlayerInfo"]
+layout_mode = 2
+theme = ExtResource("4_gnyca")
+theme_override_colors/font_color = Color(1, 1, 0.6, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("7_20pc6")
+theme_override_font_sizes/font_size = 16
+text = "รหัส: 663380303-5"
+horizontal_alignment = 2
+
+[node name="Retry" type="ColorRect" parent="UserInterface"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.447059)
+
+[node name="Label" type="Label" parent="UserInterface/Retry"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -13.0
+offset_right = 75.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Press Space or Enter to retry"
+
+[node name="Root Scene" parent="." instance=ExtResource("6_3dxm6")]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -21, 1, 5)
+
+[node name="Root Scene2" parent="." instance=ExtResource("8_trn2v")]
+transform = Transform3D(0.2875, 0, 0.497965, 0, 0.575, 0, -0.497965, 0, 0.2875, 17, 0, -2)
+
+[node name="Root Scene3" parent="." instance=ExtResource("9_03owx")]
+transform = Transform3D(10.8, 0, 0, 0, 10.8, 0, 0, 0, 10.8, -5, -1, 12)
+
+[node name="Root Scene4" parent="." instance=ExtResource("9_03owx")]
+transform = Transform3D(7.63675, 0, 7.63675, 0, 10.8, 0, -7.63675, 0, 7.63675, -3, -1, -12)
+
+[node name="Root Scene5" parent="." instance=ExtResource("9_03owx")]
+transform = Transform3D(-4.72083e-07, 0, 10.8, 0, 10.8, 0, -10.8, 0, -4.72083e-07, 5, -1, 12)
+
+[node name="Crab" parent="." instance=ExtResource("10_wkp8b")]
+transform = Transform3D(-0.00112382, 0, 0.00278155, 0, 0.003, 0, -0.00278155, 0, -0.00112382, 4.41, 0, -9.49)
+
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
